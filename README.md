@@ -1,0 +1,1 @@
+This is the repository of the rock-paper-scissors project from The Odin Project (Foundations). The idea is to create a rock-papers-scissors game played by a player agains the computer through the web developer console. A graphical interface will be added later.
