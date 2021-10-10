@@ -26,8 +26,6 @@ function computerPlay() {
     return computerSelection;
 }
 
-
-
 function playerPlay() {
     let playerSelection;
     playerSelection = prompt('Choose your hand!', '');
@@ -37,64 +35,65 @@ function playerPlay() {
     return playerSelection;
 }
 
-function playRound(playerSelection, computerSelection, playerScore = 0, computerScore = 0) {
+function playRound(playerSelection, computerSelection, playerScore, computerScore) {
     let message;
     if (playerSelection === 'ROCK') {
         if (computerSelection === 'ROCK') {
             message = `You chose ${playerSelection}. The computer chose ${computerSelection}. This round is tied.`;
-            playerScore++;
-            computerScore++;
+            playerScore += 1;
+            computerScore += 1;
         } else if (computerSelection === 'PAPER') { 
             message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You lose this round.`;
-            computerScore++;
+            computerScore += 1;
         } else if (computerSelection === 'SCISSORS') {
             message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You win this round.`;
-            playerScore++;
+            playerScore += 1;
         }
         
     }   else if (playerSelection === 'PAPER') {
             if (computerSelection === 'ROCK') {
                 message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You win this round.`;
-                playerScore++;
+                playerScore += 1;
             } else if (computerSelection === 'PAPER') { 
                 message = `You chose ${playerSelection}. The computer chose ${computerSelection}. This round is tied.`;
-                playerScore++;
-                computerScore++;
+                playerScore += 1;
+                computerScore += 1;
             } else if (computerSelection === 'SCISSORS') {
                 message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You lose this round.`;
-                computerScore++;
+                computerScore += 1;
             }
         
     }   else if (playerSelection === 'SCISSORS') {
             if (computerSelection === 'ROCK') {
                 message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You lose this round.`;
-                computerScore++;
+                computerScore += 1;
             } else if (computerSelection === 'PAPER') { 
                 message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You win this round.`;
-                playerScore++;
+                playerScore += 1;
             } else if (computerSelection === 'SCISSORS') {
                 message = `You chose ${playerSelection}. The computer chose ${computerSelection}. This round is tied.`;
-                playerScore++;
-                computerScore++;
+                playerScore += 1;
+                computerScore += 1;
             }
         }
 
-    return message;
+    return [message, playerScore, computerScore];
 }
 
 function playGame(numberOfRounds) {
     i = 0;
-    let scoreP = 0;
-    let scoreC = 0;
     
+    let result = ["string", 0, 0];
+
     while (i < numberOfRounds) {
         computerChoice = computerPlay();
         playerChoice = playerPlay();
-        result = playRound(playerChoice, computerChoice, scoreP, scoreC);
+        result = playRound(playerChoice, computerChoice, result[1], result[2]);
+        alert(`${result[0]} Player: ${result[1]}, Computer: ${result[2]}.`)
         i += 1;
     }
 
-    return [scoreP, scoreC];
+    return [result[1], result[2]];
 }
 
 function compareScores(scorePlayer, scoreComputer) {
@@ -111,4 +110,9 @@ function compareScores(scorePlayer, scoreComputer) {
     return finalMessage;
 }
 
+num = numberOfRounds(); 
 
+let scoreBoard;
+scoreBoard = playGame(num);
+theFinalMessage = compareScores(scoreBoard[0], scoreBoard[1]);
+alert(theFinalMessage);
