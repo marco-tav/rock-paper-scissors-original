@@ -83,7 +83,7 @@ function playRound(playerSelection, computerSelection, playerScore, computerScor
 function playGame(numberOfRounds) {
     i = 0;
     
-    let result = ["string", 0, 0];
+    let result = ["string", 0, 0];  
 
     while (i < numberOfRounds) {
         computerChoice = computerPlay();
@@ -110,9 +110,11 @@ function compareScores(scorePlayer, scoreComputer) {
     return finalMessage;
 }
 
-num = numberOfRounds(); 
+do {
+    num = numberOfRounds(); 
 
-let scoreBoard;
-scoreBoard = playGame(num);
-theFinalMessage = compareScores(scoreBoard[0], scoreBoard[1]);
-alert(theFinalMessage);
+    let scoreBoard;
+    scoreBoard = playGame(num);
+    theFinalMessage = compareScores(scoreBoard[0], scoreBoard[1]);
+    alert(theFinalMessage);
+} while (confirm("Do you wish to play again?"));
