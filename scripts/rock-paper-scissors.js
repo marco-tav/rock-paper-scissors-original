@@ -100,7 +100,7 @@ function compareScores(scorePlayer, scoreComputer) {
     let finalMessage;
     
     if (scorePlayer > scoreComputer) {
-        finalMessage = `Congratulations, you won this game ${scorePlayer} to ${scoreComputer}`;
+        finalMessage = `Congratulations, you won this game ${scorePlayer} to ${scoreComputer}!`;
     } else if (scorePlayer < scoreComputer) {
         finalMessage = `Oh no, you lost ${scorePlayer} to ${scoreComputer} to the computer! Better luck next time!`;
     } else if (scorePlayer === scoreComputer) {
