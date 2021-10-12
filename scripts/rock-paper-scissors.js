@@ -1,12 +1,13 @@
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// ----------------------------------------------------------------------------- FUNCTION DECLARATIONS ------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------- FUNCTION DECLARATIONS -----------------------------------------
 
-function numberOfRounds() {
+function numberOfRounds() {  // Prompts the player for amount of rounds to play.
     n = prompt("How many rounds would you like to play?", " ");
     return n;
 }
 
-function computerPlay() {
+function computerPlay() {   // Gets the computer selection.
+    
     // Pick a random number between 0, 1 and 2.
     let randomNumber;
     randomNumber = Math.floor(Math.random() * 3);
@@ -29,7 +30,7 @@ function computerPlay() {
     return computerSelection;
 }
 
-function playerPlay() {
+function playerPlay() {  // Gets the player selection.
     let playerSelection;
     playerSelection = prompt('Choose your hand!', '');
 
@@ -93,7 +94,7 @@ function playRound(playerSelection, computerSelection, playerScore, computerScor
     return [message, playerScore, computerScore];
 }
 
-function playGame(numberOfRounds) {
+function playGame(numberOfRounds) {  // Plays a game with the amount of rounds the player entered.
     i = 0;
     
     // Create an empty array for playRound() function to fill.
@@ -137,8 +138,8 @@ function compareScores(scorePlayer, scoreComputer) {
     return finalMessage;
 }
 
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// ------------------------------------------------------------------------------- EXECUTION ----------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------- EXECUTION ------------------------------------------------
 
 do {
     let num;
