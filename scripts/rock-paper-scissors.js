@@ -125,14 +125,11 @@ function compareScores(scorePlayer, scoreComputer) {
 // ---------------------------------------------------------- EXECUTION ------------------------------------------------
 
 do {
-    let num;
-    num = numberOfRounds(); 
+    let num = numberOfRounds(); 
 
-    // scoreBoard is an array like this: [player's score, computer's score].
-    let scoreBoard;
-    scoreBoard = playGame(num);
+    let scoreBoard = playGame(num);
     
-    theFinalMessage = compareScores(scoreBoard[0], scoreBoard[1]);
+    let theFinalMessage = compareScores(scoreBoard[0], scoreBoard[1]);
     alert(theFinalMessage);
 
 } while (confirm("Do you wish to play again?")); 
