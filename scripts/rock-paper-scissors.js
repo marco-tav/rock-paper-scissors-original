@@ -88,7 +88,7 @@ function playRound(playerSelection, computerSelection, playerScore, computerScor
 function playGame(numberOfRounds) {
     i = 0;
     
-    // Create an empty variable for playRound() function to fill in.
+    // Create an empty variable for playRound() function to fill.
     let result;
     result = ["string", 0, 0];  
 
@@ -103,6 +103,7 @@ function playGame(numberOfRounds) {
         }
         
         computerChoice = computerPlay();
+        
         result = playRound(playerChoice, computerChoice, result[1], result[2]);
         alert(`${result[0]} Player: ${result[1]}, Computer: ${result[2]}.`)
         i += 1;
@@ -133,7 +134,7 @@ do {
     let num;
     num = numberOfRounds(); 
 
-    // scoreBoard is an array like [player's score, computer's score].
+    // scoreBoard is an array like this: [player's score, computer's score].
     let scoreBoard;
     scoreBoard = playGame(num);
     
