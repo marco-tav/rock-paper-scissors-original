@@ -127,7 +127,7 @@ function compareScores(scorePlayer, scoreComputer) {
 do {
     let num = numberOfRounds(); 
 
-    let scoreBoard = playGame(num);
+    const scoreBoard = playGame(num);
     
     let theFinalMessage = compareScores(scoreBoard[0], scoreBoard[1]);
     alert(theFinalMessage);
