@@ -42,54 +42,37 @@ function playerPlay() {  // Gets the player selection.
 }
 
 function playRound(playerSelection, computerSelection, playerScore, computerScore) {
-    let message;
-    if (playerSelection === 'ROCK') { // Comparison cases when player selected ROCK.
-        if (computerSelection === 'ROCK') {
-            message = `You chose ${playerSelection}. The computer chose ${computerSelection}. This round is tied.`;
-            playerScore += 1;
-            computerScore += 1;
-        
-        } else if (computerSelection === 'PAPER') { 
-            message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You lose this round.`;
-            computerScore += 1;
-        
-        } else if (computerSelection === 'SCISSORS') {
-            message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You win this round.`;
-            playerScore += 1;
-        }
-        
+    let message; 
+
+    if (playerSelection === computerSelection) {
+        message = `You chose ${playerSelection}. The computer chose ${computerSelection}. It's a tie!`;
+        playerScore += 1;
+        computerScore += 1;
     
-    }   else if (playerSelection === 'PAPER') { // Comparison cases when player selected PAPER.
-            if (computerSelection === 'ROCK') {
-                message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You win this round.`;
-                playerScore += 1;
-            
-            } else if (computerSelection === 'PAPER') { 
-                message = `You chose ${playerSelection}. The computer chose ${computerSelection}. This round is tied.`;
-                playerScore += 1;
-                computerScore += 1;
-            
-            } else if (computerSelection === 'SCISSORS') {
-                message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You lose this round.`;
-                computerScore += 1;
-            }
-        
+    // Cases where the player chose ROCK.
+    } else if (playerSelection === 'ROCK' && computerSelection === 'PAPER') {
+        message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You lose this round!`;
+        computerScore += 1;
+    } else if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS') {
+        message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You win this round!`;
+        playerScore += 1;
     
-    }   else if (playerSelection === 'SCISSORS') { // Comparison cases when player selecter SCISSORS.
-            if (computerSelection === 'ROCK') {
-                message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You lose this round.`;
-                computerScore += 1;
-            
-            } else if (computerSelection === 'PAPER') { 
-                message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You win this round.`;
-                playerScore += 1;
-            
-            } else if (computerSelection === 'SCISSORS') {
-                message = `You chose ${playerSelection}. The computer chose ${computerSelection}. This round is tied.`;
-                playerScore += 1;
-                computerScore += 1;
-            }
-        }
+    // Cases where the player chose PAPER.
+    } else if (playerSelection === 'PAPER' && computerSelection === 'ROCK') {
+        message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You win this round!`;
+        playerScore += 1;
+    } else if (playerSelection === 'PAPER' && computerSelection === 'SCISSORS') {
+        message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You lose this round!`;
+        computerScore += 1;
+    
+    // Cases where the player chose SCISSORS.
+    } else if (playerSelection === 'SCISSORS' && computerSelection === 'ROCK') {
+        message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You lose this round!`;
+        computerScore += 1;
+    } else if (playerSelection === 'SCISSORS' && computerSelection === 'PAPER') {
+        message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You win this round!`;
+        playerScore += 1;
+    }
 
     return [message, playerScore, computerScore];
 }
