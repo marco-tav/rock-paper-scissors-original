@@ -80,7 +80,7 @@ function playRound(playerSelection, computerSelection, playerScore, computerScor
 function playGame(numberOfRounds) {  // Plays a game with the amount of rounds the player entered.
     i = 0;
     
-    // Create an empty array for playRound() function to fill.
+    // Create an array for playRound() function to fill.
     let result;
     result = ["string", 0, 0];  
 
@@ -88,16 +88,16 @@ function playGame(numberOfRounds) {  // Plays a game with the amount of rounds t
     while (i < numberOfRounds) {
         playerChoice = playerPlay();
         
-        // While block to correct typos and incorrect inputs.
         while (playerChoice !== "ROCK" && playerChoice !== "PAPER" && playerChoice !== "SCISSORS") {
             alert(`You entered ${playerChoice}. Only ROCK, PAPER and SCISSORS will work. Try again!`)
-            playerChoice = playerPlay(); // Runs playerPlay() again so the player can correct the typo.
+            playerChoice = playerPlay(); 
         }
         
         computerChoice = computerPlay();
         
         result = playRound(playerChoice, computerChoice, result[1], result[2]);
         alert(`${result[0]} Player: ${result[1]}, Computer: ${result[2]}.`)
+        
         i += 1;
     }
 
