@@ -84,7 +84,7 @@ function playGame(numberOfRounds) {  // Plays a game with the amount of rounds t
     let result;
     result = ["string", 0, 0];  
 
-    // A while loop the number of rounds that the player entered.
+    // A while loop to play the number of rounds that the player entered.
     while (i < numberOfRounds) {
         playerChoice = playerPlay();
         
@@ -124,12 +124,12 @@ function compareScores(scorePlayer, scoreComputer) {
 // ---------------------------------------------------------------------------------------------------------------------
 // ---------------------------------------------------------- EXECUTION ------------------------------------------------
 
-do {
-    let num = numberOfRounds(); 
+// do {
+//    let num = numberOfRounds(); 
 
-    const scoreBoard = playGame(num);
+//    const scoreBoard = playGame(num);
     
-    let theFinalMessage = compareScores(scoreBoard[0], scoreBoard[1]);
-    alert(theFinalMessage);
+//    let theFinalMessage = compareScores(scoreBoard[0], scoreBoard[1]);
+//    alert(theFinalMessage);
 
-} while (confirm("Do you wish to play again?")); 
+//} while (confirm("Do you wish to play again?"));
