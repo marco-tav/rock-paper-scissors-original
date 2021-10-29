@@ -1,12 +1,6 @@
 //--------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------- FUNCTION DECLARATIONS -----------------------------------------
-
-function numberOfRounds() {  // Prompts the player for amount of rounds to play.
-    n = prompt("How many rounds would you like to play?", " ");
-    return n;
-}
-
-function computerPlay() {   // Gets the computer selection.
+function getComputerSelection() {   // Gets the computer selection.
     
     // Pick a random number between 0, 1 and 2.
     let randomNumber;
@@ -30,13 +24,26 @@ function computerPlay() {   // Gets the computer selection.
     return computerSelection;
 }
 
-function playerPlay() {  // Gets the player selection.
-    let playerSelection;
-    playerSelection = prompt('Choose your hand!', '');
+function getPlayerSelection() { 
+    const buttons = document.querySelectorAll('.rps');
 
-    // Added trim to prevent whitespace and converted to upper case to make the choice case insensitive.
-    playerSelection = playerSelection.trim();
-    playerSelection = playerSelection.toUpperCase();
+    let id;
+    let playerSelection;
+
+    buttons.forEach((button) => {
+
+        button.addEventListener('click', () => {
+            id = button.id;
+
+            if (id === 'rock') {
+                playerSelection = 'ROCK';
+            } else if (id === 'paper') {
+                playerSelection = 'PAPER';
+            } else if (id === 'scissors') {
+                playerSelection = 'SCISSORS';
+            }
+        })
+    })
 
     return playerSelection;
 }
@@ -77,59 +84,5 @@ function playRound(playerSelection, computerSelection, playerScore, computerScor
     return [message, playerScore, computerScore];
 }
 
-function playGame(numberOfRounds) {  // Plays a game with the amount of rounds the player entered.
-    i = 0;
-    
-    // Create an array for playRound() function to fill.
-    let result;
-    result = ["string", 0, 0];  
-
-    // A while loop to play the number of rounds that the player entered.
-    while (i < numberOfRounds) {
-        playerChoice = playerPlay();
-        
-        while (playerChoice !== "ROCK" && playerChoice !== "PAPER" && playerChoice !== "SCISSORS") {
-            alert(`You entered ${playerChoice}. Only ROCK, PAPER and SCISSORS will work. Try again!`)
-            playerChoice = playerPlay(); 
-        }
-        
-        computerChoice = computerPlay();
-        
-        result = playRound(playerChoice, computerChoice, result[1], result[2]);
-        alert(`${result[0]} Player: ${result[1]}, Computer: ${result[2]}.`)
-        
-        i += 1;
-    }
-
-    return [result[1], result[2]];
-}
-
-function gameResult(scorePlayer, scoreComputer) {
-    let finalMessage;
-    
-    // Compares the final scores and returns a victory, defeat or tie message.
-    if (scorePlayer > scoreComputer) {
-        finalMessage = `Congratulations, you won this game ${scorePlayer} to ${scoreComputer}!`;
-    
-    } else if (scorePlayer < scoreComputer) {
-        finalMessage = `Oh no, you lost ${scorePlayer} to ${scoreComputer} to the computer! Better luck next time!`;
-    
-    } else if (scorePlayer === scoreComputer) {
-        finalMessage = `It's a tie at ${scorePlayer} to ${scoreComputer}!`;
-    }
-
-    return finalMessage;
-}
-
 // ---------------------------------------------------------------------------------------------------------------------
 // ---------------------------------------------------------- EXECUTION ------------------------------------------------
-
-// do {
-//    let num = numberOfRounds(); 
-
-//    const scoreBoard = playGame(num);
-    
-//    let theFinalMessage = gameResult(scoreBoard[0], scoreBoard[1]);
-//    alert(theFinalMessage);
-
-//} while (confirm("Do you wish to play again?"));

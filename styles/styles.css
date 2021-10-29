@@ -61,11 +61,12 @@ body {
 
 .button:hover {
     border: 2px solid #ededed;
+    background-color: #7aabfa;
 }
 
 .button:active {
     background-color: #78a8f5;
-    color: #fafafa;
+    color: #ededed;
 }
 
 #rounds-number {
@@ -86,7 +87,7 @@ body {
     width: 850px;
     height: 100px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
