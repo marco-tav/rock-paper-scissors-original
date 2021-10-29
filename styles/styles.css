@@ -36,6 +36,14 @@ body {
     margin-top: 30px;
     border: 2px solid #ffffff;
     border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.message {
+    padding-left: 40px;
+    padding-right: 10px;
 }
 
 .button {
@@ -50,7 +58,7 @@ body {
     color: #ffffff;
 }
 
-#roundsNumber {
+#rounds-number {
     height: 40px;
     width: 70px;
     font-family: "Roboto Slab", monospace;
@@ -72,3 +80,6 @@ body {
     align-items: center;
 }
 
+h1 {
+    font-size: 100px;
+}

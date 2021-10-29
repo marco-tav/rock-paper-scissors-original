@@ -104,7 +104,7 @@ function playGame(numberOfRounds) {  // Plays a game with the amount of rounds t
     return [result[1], result[2]];
 }
 
-function compareScores(scorePlayer, scoreComputer) {
+function gameResult(scorePlayer, scoreComputer) {
     let finalMessage;
     
     // Compares the final scores and returns a victory, defeat or tie message.
@@ -129,7 +129,7 @@ function compareScores(scorePlayer, scoreComputer) {
 
 //    const scoreBoard = playGame(num);
     
-//    let theFinalMessage = compareScores(scoreBoard[0], scoreBoard[1]);
+//    let theFinalMessage = gameResult(scoreBoard[0], scoreBoard[1]);
 //    alert(theFinalMessage);
 
 //} while (confirm("Do you wish to play again?"));
