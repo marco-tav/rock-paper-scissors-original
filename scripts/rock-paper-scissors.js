@@ -6,7 +6,7 @@ function numberOfRounds() {  // Prompts the player for amount of rounds to play.
     return n;
 }
 
-function getComputerSelection() {   // Gets the computer selection.
+function getComputerSelection() {  
     
     // Pick a random number between 0, 1 and 2.
     let randomNumber;
@@ -17,13 +17,13 @@ function getComputerSelection() {   // Gets the computer selection.
     // Make an equivalence between each of those numbers and rock, paper or scissors.
     switch(randomNumber) {
         case 0:
-            computerSelection = 'ROCK';
+            computerSelection = 'rock';
             break;
         case 1:
-            computerSelection = 'PAPER';
+            computerSelection = 'paper';
             break;
         case 2: 
-            computerSelection = 'SCISSORS';
+            computerSelection = 'scissors';
             break;
     }
 
@@ -32,11 +32,11 @@ function getComputerSelection() {   // Gets the computer selection.
 
 function getPlayerSelection(id) {
     if (id === 'rock') {
-        playerSelection = 'ROCK';
+        playerSelection = 'Rock';
     } else if (id === 'paper') {
-        playerSelection = 'PAPER';
+        playerSelection = 'Paper';
     } else if (id === 'scissors') {
-        playerSelection = 'SCISSORS';
+        playerSelection = 'Scissors';
     }
 
     return playerSelection;
@@ -51,26 +51,26 @@ function playRound(playerSelection, computerSelection, playerScore, computerScor
         computerScore += 1;
     
     // Cases where the player chose ROCK.
-    } else if (playerSelection === 'ROCK' && computerSelection === 'PAPER') {
+    } else if (playerSelection === 'rock' && computerSelection === 'paper') {
         message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You lose this round!`;
         computerScore += 1;
-    } else if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS') {
+    } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
         message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You win this round!`;
         playerScore += 1;
     
     // Cases where the player chose PAPER.
-    } else if (playerSelection === 'PAPER' && computerSelection === 'ROCK') {
+    } else if (playerSelection === 'paper' && computerSelection === 'rock') {
         message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You win this round!`;
         playerScore += 1;
-    } else if (playerSelection === 'PAPER' && computerSelection === 'SCISSORS') {
+    } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
         message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You lose this round!`;
         computerScore += 1;
     
     // Cases where the player chose SCISSORS.
-    } else if (playerSelection === 'SCISSORS' && computerSelection === 'ROCK') {
+    } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
         message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You lose this round!`;
         computerScore += 1;
-    } else if (playerSelection === 'SCISSORS' && computerSelection === 'PAPER') {
+    } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
         message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You win this round!`;
         playerScore += 1;
     }
@@ -124,16 +124,17 @@ function compareScores(scorePlayer, scoreComputer) {
 
 // ---------------------------------------------------------------------------------------------------------------------
 // ---------------------------------------------------------- EXECUTION ------------------------------------------------
-
 const buttons = document.querySelectorAll('.rps');
-
+const message = document.querySelector('.message');
 let buttonId;
 let playerSelection;
 
 buttons.forEach((button) => {
     
     button.addEventListener('click', () => {
-        buttonId = button.id;
-        playerSelection = getPlayerSelection(buttonId);
+        playerSelection = button.id;
+        computerSelection = getComputerSelection();
+        playRoundArray = playRound(playerSelection, computerSelection, 0, 0);
+        message.textContent = playRoundArray[0];
     })
 })
