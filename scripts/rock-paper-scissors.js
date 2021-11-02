@@ -83,9 +83,9 @@ function playGame(numberOfRounds) {  // Plays a game with the amount of rounds t
     
     // Create an array for playRound() function to fill.
     let result;
-    result = ["string", 0, 0];  
+    result = ["message", 0, 0];  
 
-    // A while loop the number of rounds that the player entered.
+    // A while loop to play the number of rounds that the player entered.
     while (i < numberOfRounds) {
         playerChoice = playerPlay();
         
@@ -105,20 +105,17 @@ function playGame(numberOfRounds) {  // Plays a game with the amount of rounds t
     return [result[1], result[2]];
 }
 
-function compareScores(scorePlayer, scoreComputer) {
+function writeVictoryMessage(playerScore, computerScore) {
     let finalMessage;
     
-    // Compares the final scores and returns a victory, defeat or tie message.
-    if (scorePlayer > scoreComputer) {
-        finalMessage = `Congratulations, you won this game ${scorePlayer} to ${scoreComputer}!`;
+    // Compares the final scores and returns a victory or defeat.
+    if (playerScore === 5) {
+        finalMessage = `Congratulations, you won this game ${playerScore} to ${computerScore}! Reload to play again!`;
     
-    } else if (scorePlayer < scoreComputer) {
-        finalMessage = `Oh no, you lost ${scorePlayer} to ${scoreComputer} to the computer! Better luck next time!`;
-    
-    } else if (scorePlayer === scoreComputer) {
-        finalMessage = `It's a tie at ${scorePlayer} to ${scoreComputer}!`;
+    } else if (computerScore === 5) {
+        finalMessage = `Oh no, you lost ${playerScore} to ${computerScore}! Better luck next time! Reload to play again!`;
     }
-
+    
     return finalMessage;
 }
 
@@ -126,20 +123,36 @@ function compareScores(scorePlayer, scoreComputer) {
 // ---------------------------------------------------------- EXECUTION ------------------------------------------------
 const buttons = document.querySelectorAll('.rps');
 const message = document.querySelector('.message');
+const playAgain = document.querySelector('play-again');
 let buttonId;
 let playerSelection;
 let playerScore = 0;
 let computerScore = 0;
+let finalMessage;
 
 buttons.forEach((button) => {
     
     button.addEventListener('click', () => {
         playerSelection = button.id; // Gets the player selection from the button id.
         computerSelection = getComputerSelection();
+        
         playRoundArray = playRound(playerSelection, computerSelection, 0, 0);
-        playerScore += playRoundArray[1];
+        
+        playerScore += playRoundArray[1]; // The playRound function doens't keep the score so I add it here.
         computerScore += playRoundArray[2];
+        
         let scoreMessage = ` The score is ${playerScore} - ${computerScore}.`;
         message.textContent = playRoundArray[0] + scoreMessage;
+
+        if (playerScore === 5) {
+            message.textContent = `You won ${playerScore} to ${computerScore}! Just keep playing to start again!`;
+            playerScore = 0;
+            computerScore = 0;
+        
+        } else if (computerScore === 5) {
+            message.textContent = `You lost ${playerScore} to ${computerScore}! Just keep playing to start again!`;
+            playerScore = 0;
+            computerScore = 0;
+        }
     })
 })
