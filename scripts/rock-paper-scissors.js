@@ -46,33 +46,33 @@ function playRound(playerSelection, computerSelection, playerScore, computerScor
     let message; 
 
     if (playerSelection === computerSelection) {
-        message = `You chose ${playerSelection}. The computer chose ${computerSelection}. It's a tie!`;
         playerScore += 1;
         computerScore += 1;
+        message = `You chose ${playerSelection}. The computer chose ${computerSelection}.`;
     
     // Cases where the player chose ROCK.
     } else if (playerSelection === 'rock' && computerSelection === 'paper') {
-        message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You lose this round!`;
         computerScore += 1;
+        message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You lose this round!`;
     } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You win this round!`;
         playerScore += 1;
+        message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You win this round!`;
     
     // Cases where the player chose PAPER.
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-        message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You win this round!`;
         playerScore += 1;
+        message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You win this round!`;
     } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-        message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You lose this round!`;
         computerScore += 1;
+        message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You lose this round!`;
     
     // Cases where the player chose SCISSORS.
     } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-        message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You lose this round!`;
         computerScore += 1;
+        message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You lose this round!`;
     } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You win this round!`;
         playerScore += 1;
+        message = `You chose ${playerSelection}. The computer chose ${computerSelection}. You win this round!`;
     }
 
     return [message, playerScore, computerScore];
@@ -128,13 +128,18 @@ const buttons = document.querySelectorAll('.rps');
 const message = document.querySelector('.message');
 let buttonId;
 let playerSelection;
+let playerScore = 0;
+let computerScore = 0;
 
 buttons.forEach((button) => {
     
     button.addEventListener('click', () => {
-        playerSelection = button.id;
+        playerSelection = button.id; // Gets the player selection from the button id.
         computerSelection = getComputerSelection();
         playRoundArray = playRound(playerSelection, computerSelection, 0, 0);
-        message.textContent = playRoundArray[0];
+        playerScore += playRoundArray[1];
+        computerScore += playRoundArray[2];
+        let scoreMessage = ` The score is ${playerScore} - ${computerScore}.`;
+        message.textContent = playRoundArray[0] + scoreMessage;
     })
 })
