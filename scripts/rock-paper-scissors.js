@@ -1,7 +1,7 @@
 //--------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------- FUNCTION DECLARATIONS -----------------------------------------
 
-function numberOfRounds() {  // Prompts the player for amount of rounds to play.
+function numberOfRounds() {  // Prompts the player for amount of rounds to play. So far not used in the UI version.
     n = prompt("How many rounds would you like to play?", " ");
     return n;
 }
@@ -30,7 +30,7 @@ function getComputerSelection() {
     return computerSelection;
 }
 
-function getPlayerSelection(id) {
+function getPlayerSelection(id) { // Not used in this UI version. The code simply gets the choice from the id of each button.
     if (id === 'rock') {
         playerSelection = 'Rock';
     } else if (id === 'paper') {
@@ -78,7 +78,7 @@ function playRound(playerSelection, computerSelection, playerScore, computerScor
     return [message, playerScore, computerScore];
 }
 
-function playGame(numberOfRounds) {  // Plays a game with the amount of rounds the player entered.
+function playGame(numberOfRounds) {  // Plays a game with the amount of rounds the player entered. Not used in UI version so far.
     i = 0;
     
     // Create an array for playRound() function to fill.
